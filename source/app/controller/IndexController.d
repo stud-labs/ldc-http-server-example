@@ -4,12 +4,12 @@ import hunt.framework;
 
 class IndexController : Controller
 {
-    mixin MakeController;
+  mixin MakeController;
 
-    @Action
-    string index()
-    {
-        return "Hello world!";
-    }
+  @Action
+  string index()
+  {
+    return "Hello world!";
+  }
+
 }
-

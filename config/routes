@@ -3,6 +3,7 @@
 # Symbol* can accept all request method
 #
 
-GET   /        index.index
-POST  /index   index.index
-*    /home     index.index
+GET   /             index.index
+POST  /index        index.index
+*     /home         index.index
+GET   /api/test     api.testApi
