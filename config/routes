@@ -1,0 +1,8 @@
+#
+# [GET,POST,PUT,*,...]    path    controller.method
+# Symbol* can accept all request method
+#
+
+GET   /        index.index
+POST  /index   index.index
+*    /home     index.index

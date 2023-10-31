@@ -1,0 +1,24 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"grpc": "0.5.0-beta.2",
+		"hunt": "1.7.17",
+		"hunt-cache": "0.10.1",
+		"hunt-console": "0.4.0",
+		"hunt-database": "2.3.6",
+		"hunt-entity": "2.8.1",
+		"hunt-extra": "1.2.3",
+		"hunt-framework": "3.4.6",
+		"hunt-http": "0.8.2",
+		"hunt-jwt": "0.2.0-beta.4",
+		"hunt-net": "0.7.1",
+		"hunt-openssl": "1.0.5",
+		"hunt-redis": "1.4.1",
+		"hunt-security": "0.6.0",
+		"hunt-shiro": "1.3.1",
+		"hunt-sql": "1.6.0",
+		"hunt-validation": "0.5.0",
+		"poodinis": "8.1.3",
+		"protobuf": "0.6.2"
+	}
+}
