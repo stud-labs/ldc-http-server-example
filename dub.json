@@ -1,13 +1,14 @@
 {
-	"authors": [
-		"stud"
-	],
-	"copyright": "Copyright © 2023, stud",
-	"dependencies": {
-		"hunt-framework": "~>3.4.6"
-	},
-	"description": "A minimal D application.",
-	"license": "MIT",
-	"name": "webapp",
-	"targetType": "executable"
+  "authors": [
+    "stud"
+  ],
+  "dflags-lcd2": ["--output-ll"],
+  "copyright": "Copyright © 2023, stud",
+  "dependencies": {
+    "hunt-framework": "~>3.4.6"
+  },
+  "description": "A minimal D application.",
+  "license": "MIT",
+  "name": "webapp",
+  "targetType": "executable"
 }
