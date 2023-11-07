@@ -1,0 +1,397 @@
+
+\documentclass{studrep}
+
+\RequirePackage{tabularx}
+% \RequirePackage{graphicx}
+
+\graphicspath{{pics/}}
+
+% \usepackage{showframe}
+
+% pygmetize
+\RequirePackage{minted}
+\usemintedstyle{tango} % bw
+
+% \setmainfont{Times New Roman}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+Министерство науки и высшего образования Российской Федерации
+
+Федеральное государственное бюджетное образовательное учреждение\\ высшего образования
+
+«Иркутский государственный университет»\\
+(ФГБОУ ВО «ИГУ»)
+
+Институт математики и информационных технологий
+
+Кафедра информационных технологий
+\end{center}
+
+\vfill
+\begin{center}
+  \textbf{\large ОТЧЕТ}
+
+  по научно"=исследовательской работе
+  % по производственной практике
+  % по преддипломной практике   % и т.п.
+  %\textbf{ ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА\\
+%БАКАЛАВРА}
+\vspace{1em}
+
+% по направлению 02.03.03 -- Математическое обеспечение и администрирование информационных систем
+
+% профиль <<общий>>
+
+\vspace{2em}
+ТЕМА БОЛЬШИМИ БУКВАМИ
+
+\end{center}
+\vfill
+
+\noindent\begin{tabularx}{\textwidth} {
+  >{\raggedright\arraybackslash}X
+  >{\raggedright}X }
+&
+
+Студента \_ курса очного отделения\\
+группы 02\_4\_-ДБ\\
+Фамилия Имя Отчество\\[2em]
+
+Руководитель:\\
+к.~т.~н., доцент\\
+\underline{\hspace{3cm}} Иванов Иван Иванович\\[2em]
+
+Защищен с оценкой\\[1em] \underline{\hspace{3cm}}
+%Допущена к защите\\
+%Зав.каф., к.~т.~н., доцент\\
+%\underline{\hspace{3cm}} Черкашин Евгений\\ \hspace{3cm} Александрович\\[2em]
+
+\end{tabularx}
+\vfill
+\begin{center}
+  Иркутск -- 2022
+\end{center}
+\clearpage
+
+\tableofcontents
+
+\chapter*{ВВЕДЕНИЕ}
+% TODO: Add contents line
+\label{chap:intro}
+
+\chapter{Теоретические основы \ldots}
+% Другой пример названия
+%\chapter{Математическое обеспечение и технологии разработки ... \ldots}
+
+Согласно \cite{bratko90}
+
+.... база данных (БД) .....
+
+
+\chapter{Исследование скомпилированного кода}
+
+\begin{minted}{text}
+  stud@sysrescue:~/projects/webapp$ dub run --compiler=ldc2
+    Starting Performing "debug" build using ldc2 for x86_64.
+  Up-to-date hunt 1.7.17: target for configuration [library] is up to date.
+  Up-to-date hunt-extra 1.2.3: target for configuration [library] is up to date.
+  Up-to-date hunt-net 0.7.1: target for configuration [default] is up to date.
+  Up-to-date hunt-http 0.8.2: target for configuration [default] is up to date.
+  Up-to-date protobuf 0.6.2: target for configuration [protobuf] is up to date.
+  Up-to-date grpc 0.5.0-beta.2: target for configuration [library] is up to date.
+  Up-to-date hunt-redis 1.4.1: target for configuration [library] is up to date.
+  Up-to-date hunt-cache 0.10.1: target for configuration [library] is up to date.
+  Up-to-date hunt-console 0.4.0: target for configuration [hunt-console] is up to date.
+  Up-to-date hunt-sql 1.6.0: target for configuration [library] is up to date.
+  Up-to-date hunt-database 2.3.6: target for configuration [default] is up to date.
+  Up-to-date hunt-validation 0.5.0: target for configuration [library] is up to date.
+  Up-to-date hunt-entity 2.8.1: target for configuration [library] is up to date.
+  Up-to-date hunt-openssl 1.0.5: target for configuration [library] is up to date.
+  Up-to-date hunt-jwt 0.2.0-beta.4: target for configuration [library] is up to date.
+  Up-to-date hunt-security 0.6.0: target for configuration [library] is up to date.
+  Up-to-date hunt-shiro 1.3.1: target for configuration [library] is up to date.
+  Up-to-date poodinis 8.1.3: target for configuration [library] is up to date.
+  Up-to-date hunt-framework 3.4.6: target for configuration [library] is up to date.
+  Up-to-date webapp ~master: target for configuration [application] is up to date.
+    Finished To force a rebuild of up-to-date targets, run again with --force
+     Running webapp
+
+
+ ___  ___     ___  ___     ________      _________
+|\  \|\  \   |\  \|\  \   |\   ___  \   |\___   ___\     Hunt Framework 3.4.6
+\ \  \\\  \  \ \  \\\  \  \ \  \\ \  \  \|___ \  \_|
+ \ \   __  \  \ \  \\\  \  \ \  \\ \  \      \ \  \      Listening: 0.0.0.0:8080
+  \ \  \ \  \  \ \  \\\  \  \ \  \\ \  \      \ \  \     TLS: Disabled
+   \ \__\ \__\  \ \_______\  \ \__\\ \__\      \ \__\
+    \|__|\|__|   \|_______|   \|__| \|__|       \|__|    https://www.huntframework.com
+
+
+Try to browse http://0.0.0.0:8080
+\end{minted}
+
+
+\begin{minted}{text}
+stud@sysrescue:~/projects/webapp/source/app/controller$ ps -FC webapp
+UID          PID    PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+stud       18551   18544  0 163131 37192  0 17:25 pts/1    00:00:00 /home/stud/projects/webapp/webapp
+\end{minted}
+
+\begin{minted}{bash}
+stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/fact/9
+{"result":"362880"}
+stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/test
+{"currtime":"2023-11-07T17:25:59.8807696"}
+stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/echo/message-to-test
+{"echo":"message-to-test"}
+\end{minted}
+
+\begin{minted}{html}
+  <!--
+$ stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/fact/9e
+  -->
+<!doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>404 Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        * {
+            line-height: 3;
+            margin: 0;
+        }
+
+        html {
+            color: #888;
+            display: table;
+            font-family: sans-serif;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 2em auto;
+        }
+
+        h1 {
+            color: #555;
+            font-size: 2em;
+            font-weight: 400;
+        }
+
+        p {
+            margin: 0 auto;
+            width: 90%;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>404 Not Found</h1>
+    <p>Sorry!! Unable to complete your request :(</p>
+
+</body>
+</html>
+\end{minted}
+
+\begin{minted}{d}
+module app.controller.ApiController;
+
+import hunt.framework;
+import std.json : JSONValue;
+import std.stdio;
+import std.conv;
+
+class ApiController : Controller
+{
+  mixin MakeController;
+
+  // . . . . . . . . . . . . . .
+
+  @Action
+  JsonResponse fact(string n) {
+    JSONValue js;
+    auto res = fact(to!int(n));
+    js["result"] = to!string(res);
+    auto resp = new JsonResponse(js);
+    return resp;
+  }
+
+  int fact(int n) {
+    if (n==0) return 1;
+    if (n==1) return 1;
+    return n*fact(n-1);
+  }
+}
+\end{minted}
+
+\begin{minted}{llvm}
+; [#uses = 1]
+; Function Attrs: uwtable
+define %hunt.framework.http.JsonResponse.JsonResponse* @_D3app10controller13ApiControllerQp4factMFAyaZC4hunt9framework4http12JsonResponseQo(%app.controller.ApiController.ApiController* nonnull %.this_arg, { i64, i8* } %n_arg) #0 {
+  %this = alloca %app.controller.ApiController.ApiController*, align 8 ; [#uses = 3, size/byte = 8]
+  %n = alloca { i64, i8* }, align 8               ; [#uses = 2, size/byte = 16]
+  %js = alloca %std.json.JSONValue, align 8       ; [#uses = 3, size/byte = 24]
+  %res = alloca i32, align 4                      ; [#uses = 2, size/byte = 4]
+  %resp = alloca %hunt.framework.http.JsonResponse.JsonResponse*, align 8 ; [#uses = 3, size/byte = 8]
+  store %app.controller.ApiController.ApiController* %.this_arg, %app.controller.ApiController.ApiController** %this, align 8
+  store { i64, i8* } %n_arg, { i64, i8* }* %n, align 8
+  %1 = bitcast %std.json.JSONValue* %js to i8*    ; [#uses = 1]
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %1, i8* align 1 bitcast (%std.json.JSONValue* @_D3std4json9JSONValue6__initZ to i8*), i64 24, i1 false)
+  %2 = load %app.controller.ApiController.ApiController*, %app.controller.ApiController.ApiController** %this, align 8 ; [#uses = 1]
+  %3 = getelementptr inbounds %app.controller.ApiController.ApiController, %app.controller.ApiController.ApiController* %2, i32 0, i32 0 ; [#uses = 1, type = [38 x i8*]**]
+  %4 = load [38 x i8*]*, [38 x i8*]** %3, align 8 ; [#uses = 1]
+  %"fact@vtbl" = getelementptr inbounds [38 x i8*], [38 x i8*]* %4, i32 0, i32 36 ; [#uses = 1, type = i8**]
+  %5 = load i8*, i8** %"fact@vtbl", align 8       ; [#uses = 1]
+  %fact = bitcast i8* %5 to i32 (%app.controller.ApiController.ApiController*, i32)* ; [#uses = 1]
+  %6 = load %app.controller.ApiController.ApiController*, %app.controller.ApiController.ApiController** %this, align 8 ; [#uses = 1]
+  %7 = load { i64, i8* }, { i64, i8* }* %n, align 8 ; [#uses = 1]
+  %8 = call i32 @_D3std4conv__T2toTiZ__TQjTAyaZQqFNaNfQlZi({ i64, i8* } %7) #1 ; [#uses = 1]
+  %9 = call i32 %fact(%app.controller.ApiController.ApiController* nonnull %6, i32 %8) ; [#uses = 1]
+  store i32 %9, i32* %res, align 4
+  %10 = load i32, i32* %res, align 4              ; [#uses = 1]
+  %11 = call { i64, i8* } @_D3std4conv__T2toTAyaZ__TQlTiZQqFNaNbNfiZQx(i32 %10) #1 ; [#uses = 1]
+  call void @_D3std4json9JSONValue__T13opIndexAssignTAyaZQuMFNaNfQmQoZv(%std.json.JSONValue* nonnull %js, { i64, i8* } %11, { i64, i8* } { i64 6, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.20, i32 0, i32 0) }) #1
+  %.newclass_gc_alloc = call %object.Object* @_d_allocclass(%object.TypeInfo_Class* @_D4hunt9framework4http12JsonResponseQo7__ClassZ) #2 ; [#uses = 1]
+  %.newclass_gc = bitcast %object.Object* %.newclass_gc_alloc to %hunt.framework.http.JsonResponse.JsonResponse* ; [#uses = 5]
+  %vtbl = getelementptr inbounds %hunt.framework.http.JsonResponse.JsonResponse, %hunt.framework.http.JsonResponse.JsonResponse* %.newclass_gc, i32 0, i32 0 ; [#uses = 1, type = [19 x i8*]**]
+  store [19 x i8*]* @_D4hunt9framework4http12JsonResponseQo6__vtblZ, [19 x i8*]** %vtbl, align 8
+  %monitor = getelementptr inbounds %hunt.framework.http.JsonResponse.JsonResponse, %hunt.framework.http.JsonResponse.JsonResponse* %.newclass_gc, i32 0, i32 1 ; [#uses = 1, type = i8**]
+  store i8* null, i8** %monitor, align 8
+  %12 = getelementptr inbounds %hunt.framework.http.JsonResponse.JsonResponse, %hunt.framework.http.JsonResponse.JsonResponse* %.newclass_gc, i32 0, i32 2 ; [#uses = 1, type = %hunt.http.server.HttpServerResponse.HttpServerResponse**]
+  %13 = getelementptr inbounds %hunt.framework.http.JsonResponse.JsonResponse, %hunt.framework.http.JsonResponse.JsonResponse* @_D4hunt9framework4http12JsonResponseQo6__initZ, i32 0, i32 2 ; [#uses = 1, type = %hunt.http.server.HttpServerResponse.HttpServerResponse**]
+  %14 = bitcast %hunt.http.server.HttpServerResponse.HttpServerResponse** %12 to i8* ; [#uses = 1]
+  %15 = bitcast %hunt.http.server.HttpServerResponse.HttpServerResponse** %13 to i8* ; [#uses = 1]
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %14, i8* align 1 %15, i64 9, i1 false)
+  %16 = call %hunt.framework.http.JsonResponse.JsonResponse* @_D4hunt9framework4http12JsonResponseQo__T6__ctorTS3std4json9JSONValueZQBdMFQBaZCQDaQCyQCrQCpQCs(%hunt.framework.http.JsonResponse.JsonResponse* nonnull returned %.newclass_gc, %std.json.JSONValue* byval(%std.json.JSONValue) align 8 %js) #1 ; [#uses = 0]
+  store %hunt.framework.http.JsonResponse.JsonResponse* %.newclass_gc, %hunt.framework.http.JsonResponse.JsonResponse** %resp, align 8
+  %17 = load %hunt.framework.http.JsonResponse.JsonResponse*, %hunt.framework.http.JsonResponse.JsonResponse** %resp, align 8 ; [#uses = 0]
+  %18 = load %hunt.framework.http.JsonResponse.JsonResponse*, %hunt.framework.http.JsonResponse.JsonResponse** %resp, align 8 ; [#uses = 1]
+  ret %hunt.framework.http.JsonResponse.JsonResponse* %18
+}
+\end{minted}
+
+
+\chapter{Реализация ....}
+
+\section{Скрипт порождения структуры базы данных}
+\label{sec:struct-bd}
+
+Начало абзаца
+
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{minted}[fontsize=\normalsize]{sql}
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+\end{minted}
+\end{center}
+\caption{Скрипт SQL для создания таблицы Persons}\label{fig:create-table}
+\end{figure}
+
+\begin{lstlisting}[
+  caption={Скрипт SQL для создания таблицы Persons},  % Подпись
+  captionpos=b,               % Подпись снизу
+  basicstyle=\small\ttfamily, % Размер и тип шрифта для представления листинга
+  language=SQL
+  ]
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+\end{lstlisting}
+
+
+\chapter{Тестирование программной системы в нагруженной среде}
+
+Разработан набор тестов структуры БД (см.~\ref{sec:struct-bd} на стр.~\pageref{sec:struct-bd}).   Загрузка скрипта базы данных осуществляется при помощи команды \texttt{mysql}.  Дамп существующей БД выполняется командой \verb|mysql-dump|.
+
+Это тест шрифта \textsf{без засечек, А}А.
+Это тест шрифта \texttt{моноширинный, А}А.
+Это тест шрифта \textit{наклонный, А}А.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=0.3\linewidth]{fig1.pdf}
+  \caption{Пример работы программы}
+  \label{fig:prog-ex}
+\end{figure}
+
+
+\begin{equation}
+  \label{eq:f1}
+  E=mc^2,
+\end{equation}
+
+\noindent{}где $m$ -- это масса, $c$ -- скорость света в вакууме, \ldots
+
+Новый абзац. Рассмотрим формулу (\ref{eq:f1}).
+
+
+\chapter*{ЗАКЛЮЧЕНИЕ}
+
+В таблице~\ref{tbl:ex} представлены результаты сравнения производительности\ldots
+
+\begin{table}[hb]
+  \caption{Пример таблицы}\label{tbl:ex}
+  \centering
+\begin{tabularx}{1\textwidth} {
+  | >{\raggedright\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ item 11 & item 12 & item 13 \\
+ \hline
+ item 21  & item 22  & item 23  \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{thebibliography}{99}
+\bibitem{bratko90} И.~Братко. Язык программирования Пролог для искусственного интеллекта. М\;:~Наука. 1990. 310~c.
+\bibitem{b2} DeRidder J.L. The immediate prospects for the application of ontologies in digital libraries // Knowledge Organization -- 2007. -- Vol. 34, No. 4. P.~227-246.
+\bibitem{b2}  U.S. National Library of Medicine. Fact sheet: UMLS Metathesaurus\;:\;[текст]~/ National Institutes of Health, 2006-2013. -- URL:
+\url{http://www.nlm.nih.gov/pubs/factsheets/umlsmeta.html} (дата обращения: 2014-12-09).
+\bibitem{b2}  U.S. National Library of Medicine. Fact sheet: Unfied Medical Language System\;:\;[текст]~/ National Institutes of Health, 2006--2013. -- URL:\url{http://www.nlm.nih.gov/pubs/factsheets/umls.html} (дата обращения: 2009-12-09).
+\bibitem{b3}  Антопольский А.Б., Белоозеров В.Н. Процедура формирования макротезауруса политематических информационных систем // Классификация и кодирование. -- 1976. -- N 1 (57). -- С.~25--29.
+\bibitem{b4}  Белоозеров В.Н., Федосимов В.И. Место макротезауруса в лингвистическом обеспечении сети органов научнотехнической информации // Проблемы информационных систем. -- 1986. -- N 1. -- С.~6--10.
+\bibitem{b5}  Использование и ведение макротезауруса ГАСНТИ:Методические рекомендации / ГКНТСССР -- М., 1983. -- 12~с.
+\bibitem{b6}  Nuovo soggettario: guidaalsistemaitaliano di indicizzazione per soggetto, prototipo del thesaurus\;:\;[рецензия]~// Knowledge Organization. -- 2007. -- Vol. 34, N 1. -- P.~58--60.
+\bibitem{b7}  ГОСТ 7.25-2001 СИБИД. Тезаурус информационно-поисковый одноязычный. Правила разработки, структура, состав и форма представления. -- М., 2002. -- 16~с.
+\bibitem{b8}  Nanoscale Science and Technology Supplement: Collection ofapplicable terms fromPACS 2008\;:\;[текст]~// PACS 2010 Regular Eddition /~AIP Publishing. -- URL: \url{http://www.aip.org/publishing/pacs/nano-supplement} (дата обращения: 2014-12-09).
+\bibitem{b9}  Смирнова О.В. Методикасоставления индексов УДК // Научно-техническая информация. Сер.~1. -- 2008. -- N 8. -- С.~7--8.
+\bibitem{b10}  Индексирование фундаментальных научных направлений кодами информационных классификаций УДК /~О.А.~Антошкова, Т.С.~Астахова, В.Н.~Белоозеров и др.; под ред.акад. Ю.М.~Арского. -- М., 2010. -- 322~с.
+\bibitem{b11}  Рубрикатор как инструмент информационной навигации /~Р.С.~Гиляревский, А.В.~Шапкин, В.Н.~Белоозеров. - СПб.\;: Профессия, 2008. -- 352~с.
+\bibitem{b12}  Рубрикатор научно-технической информации по нанотехнологиям и наноматериалам / РНЦ "Курчатовский институт",
+ФГУ ГНИИ ИТТ "Информика", Национальный электронно-информационный консорциум (НЭИКОН), Всероссийский институт научной и технической информации (ВИНИТИРАН). -- М., 2009. -- 75~с.
+\bibitem{b13}  Рубрикатор по нанонауке и нанотехнологиям\;:\;[сайт]~-- URL:\url{http/www.rubric.neicon.ru} (дата обращения: 12-02-2022)
+\end{thebibliography}
+
+\appendices
+
+\chapter{Исходный код программ}
+\chapter{Документация разработчика}
+
+\end{document}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
