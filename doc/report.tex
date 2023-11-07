@@ -1,0 +1,72 @@
+
+
+
+\begin{document}
+
+\begin{minted}
+stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/fact/9
+{"result":"362880"}
+stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/test
+{"currtime":"2023-11-07T17:25:59.8807696"}
+stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/echo/message-to-test
+{"echo":"message-to-test"}
+\end{minted}
+\begin{minted}
+  <!--
+$ stud@sysrescue:~/projects/webapp/source/app/controller$ curl http://localhost:8080/api/fact/9e
+  -->
+<!doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>404 Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        * {
+            line-height: 3;
+            margin: 0;
+        }
+
+        html {
+            color: #888;
+            display: table;
+            font-family: sans-serif;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 2em auto;
+        }
+
+        h1 {
+            color: #555;
+            font-size: 2em;
+            font-weight: 400;
+        }
+
+        p {
+            margin: 0 auto;
+            width: 90%;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>404 Not Found</h1>
+    <p>Sorry!! Unable to complete your request :(</p>
+
+</body>
+</html>
+\end{minted}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "body"
+%%% End:

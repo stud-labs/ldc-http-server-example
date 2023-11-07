@@ -8,3 +8,4 @@ POST  /index        index.index
 *     /home         index.index
 GET   /api/test     api.testApi
 GET   /api/echo/{msg<.+>}/     api.echo
+GET   /api/fact/{n<\d+>}/      api.fact
